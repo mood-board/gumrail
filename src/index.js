@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import LandingPage from "../src/app/templates/landing-page/LandingPage";
 import SignInSide from "../src/app/templates/sign-in-side/SignInSide";
+import SignUp from "../src/app/templates/sign-up/SignUp";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <div>Signup</div>,
+    element: <SignUp />,
   },
 ]);
 
