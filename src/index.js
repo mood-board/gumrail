@@ -3,12 +3,14 @@ import ReactDOM from "react-dom/client";
 import LandingPage from "../src/app/templates/landing-page/LandingPage";
 import SignInSide from "../src/app/templates/sign-in-side/SignInSide";
 import SignUp from "../src/app/templates/sign-up/SignUp";
+import CreateOrganisation from "../src/app/components/onboarder/CreateOrganisation";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import theme from "./theme";
 import reportWebVitals from "./reportWebVitals";
+import CreateSite from "./app/components/onboarder/CreateSite";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,18 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    path: "/onboard/organisation",
+    element: <CreateOrganisation />,
+  },
+  {
+    path: "/onboard/site",
+    element: <CreateSite />,
+  },
+  {
+    path: "/dashboard",
+    element: <div>Dashboard</div>,
   },
 ]);
 
