@@ -47,10 +47,10 @@ function CreateSite() {
         const { site_id: siteId } = data;
 
         if (siteId == null) {
-          console.error("Organization ID is missing in the response");
-          throw new Error("Invalid organization data");
+          console.error("Site ID is missing in the response");
+          throw new Error("Invalid site data");
         }
-        navigate("/dashboard");
+        navigate("/onboard/setup");
       })
       .catch((err) => {
         console.log("an error occurred while creating site", err);

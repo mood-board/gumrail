@@ -14,7 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { Link as RouterLink } from "react-router-dom";
 
-import Sitemark from "../../icons/SitemarkIcon";
+import Sitemark from "../../icons/SiteMarkIcon";
 
 function AppAppBar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
@@ -157,10 +157,10 @@ function AppAppBar({ mode, toggleColorMode }) {
                     justifyContent: "space-between",
                   }}
                 >
-                  <ToggleColorMode
+                  {/* <ToggleColorMode
                     mode={mode}
                     toggleColorMode={toggleColorMode}
-                  />
+                  /> */}
                   <IconButton onClick={toggleDrawer(false)}>
                     <CloseRoundedIcon />
                   </IconButton>

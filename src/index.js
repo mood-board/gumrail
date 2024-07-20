@@ -11,6 +11,7 @@ import "./index.css";
 import theme from "./theme";
 import reportWebVitals from "./reportWebVitals";
 import CreateSite from "./app/components/onboarder/CreateSite";
+import TrackingCodeDisplay from "./app/components/onboarder/Setup";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/onboard/site",
     element: <CreateSite />,
+  },
+  {
+    path: "/onboard/setup",
+    element: <TrackingCodeDisplay />,
   },
   {
     path: "/dashboard",
