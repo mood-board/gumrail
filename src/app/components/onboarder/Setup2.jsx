@@ -13,18 +13,11 @@ import {
   Snackbar,
   Alert,
   CircularProgress,
-  Tabs,
-  Tab,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Divider,
 } from "@mui/material";
-import { ContentCopy, Code, ExpandMore } from "@mui/icons-material";
+import { ContentCopy } from "@mui/icons-material";
 import AppAppBar from "../nav/AppBar";
 import getLPTheme from "../../templates/landing-page/getLPTheme";
 import axiosInstance from "../../../service/axiosInstance";
-import CodeSnippetDisplay from "../CodeSnippet";
 
 const TrackingCodeDisplay = () => {
   const [mode] = React.useState("light");
@@ -36,10 +29,6 @@ const TrackingCodeDisplay = () => {
   const [error, setError] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const location = useLocation();
-  const [tabValue, setTabValue] = useState(2);
-  const [testUrl, setTestUrl] = useState("");
-  const [isDetected, setIsDetected] = useState(false);
-  const [siteId, setSiteId] = useState("");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -63,22 +52,6 @@ const TrackingCodeDisplay = () => {
         });
     }
   }, [location]);
-
-  const handleTestInstallation = () => {
-    setLoading(true);
-    setIsDetected(false);
-    axiosInstance
-      .get(`/integration/detect?site_id=5002`)
-      .then((data) => {
-        console.log("DATA: ", data);
-        setIsDetected(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError("Error testing installation. Please try again.");
-        setLoading(false);
-      });
-  };
 
   const handleCopyCode = () => {
     navigator.clipboard
@@ -112,32 +85,34 @@ const TrackingCodeDisplay = () => {
               <Typography color="error">{error}</Typography>
             ) : trackingCode ? (
               <Box>
-                <CodeSnippetDisplay
-                  code={trackingCode}
-                  onClick={handleCopyCode}
+                <Typography variant="body1" paragraph>
+                  Here's your generated tracking code. Copy and paste this into
+                  your website's HTML.
+                </Typography>
+                <TextField
+                  fullWidth
+                  multiline
+                  rows={10}
+                  value={trackingCode}
+                  InputProps={{
+                    readOnly: true,
+                    sx: { fontFamily: "monospace", fontSize: "0.9rem" },
+                  }}
+                  sx={{
+                    mb: 3,
+                    backgroundColor: "#f8f8f8",
+                    height: "220px",
+                  }}
                 />
-
-                {tabValue === 2 && (
-                  <Box>
-                    <Typography variant="h6" gutterBottom>
-                      Test Your Installation
-                    </Typography>
-                    <Typography variant="body1" paragraph>
-                      To test your installation: 1. Make sure you've installed
-                      the tracking code on your website. 2. Visit your website
-                      and interact with it for a few minutes. 3. Come back here
-                      and click the "Test Installation" button.
-                    </Typography>
-                    <Button
-                      variant="contained"
-                      onClick={handleTestInstallation}
-                      color="primary"
-                      size="large"
-                    >
-                      Test Installation
-                    </Button>
-                  </Box>
-                )}
+                <Button
+                  variant="contained"
+                  startIcon={<ContentCopy />}
+                  onClick={handleCopyCode}
+                  color="secondary"
+                  size="large"
+                >
+                  Copy to Clipboard
+                </Button>
               </Box>
             ) : (
               <Box>

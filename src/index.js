@@ -12,6 +12,8 @@ import theme from "./theme";
 import reportWebVitals from "./reportWebVitals";
 import CreateSite from "./app/components/onboarder/CreateSite";
 import TrackingCodeDisplay from "./app/components/onboarder/Setup";
+import Dashboard from "./app/components/Dashboard";
+import Layout from "./app/components/Layout";
 
 const router = createBrowserRouter([
   {
@@ -27,16 +29,31 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: "/onboard/organisation",
-    element: <CreateOrganisation />,
+    path: "/onboard",
+    children: [
+      {
+        path: "organisation",
+        element: <CreateOrganisation />,
+      },
+      {
+        path: "site",
+        element: <CreateSite />,
+      },
+      {
+        path: "setup",
+        element: <TrackingCodeDisplay />,
+      },
+    ],
   },
   {
-    path: "/onboard/site",
-    element: <CreateSite />,
-  },
-  {
-    path: "/onboard/setup",
-    element: <TrackingCodeDisplay />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      // Add more routes here that should use the Layout
+    ],
   },
   {
     path: "/dashboard",
