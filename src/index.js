@@ -14,6 +14,7 @@ import CreateSite from "./app/components/onboarder/CreateSite";
 import TrackingCodeDisplay from "./app/components/onboarder/Setup";
 import Dashboard from "./app/components/Dashboard";
 import Layout from "./app/components/Layout";
+import HotjarSetup from "./app/components/Setup";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/test",
+        element: <HotjarSetup />,
       },
       // Add more routes here that should use the Layout
     ],
