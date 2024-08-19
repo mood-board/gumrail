@@ -13,6 +13,7 @@ import reportWebVitals from "./reportWebVitals";
 import CreateSite from "./app/components/onboarder/CreateSite";
 import TrackingCodeDisplay from "./app/components/onboarder/Setup";
 import Dashboard from "./app/components/Dashboard";
+import DashboardV2 from "./app/components/DashboardV2";
 import Layout from "./app/components/Layout";
 import HotjarSetup from "./app/components/Setup";
 
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <div>Dashboard</div>,
+  },
+  {
+    path: "/dashboardv2",
+    element: <DashboardV2 />,
   },
 ]);
 
